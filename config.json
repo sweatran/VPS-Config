@@ -1,0 +1,43 @@
+{
+  "inbounds": [{
+    "port": 3540,
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
+        {
+          "id": "",
+          "level": 1,
+          "alterId": 64
+        }
+      ]
+    },
+    "streamSettings": {
+	"network": "quic",
+	"security": "",
+	"quicSettings": {
+	    "security": "chacha20-poly1305",
+	    "key": "",
+	    "header": {
+        "type": "wechat-video"
+	    }
+	}
+    }
+  }],
+  "outbounds": [{
+    "protocol": "freedom",
+    "settings": {}
+  },{
+    "protocol": "blackhole",
+    "settings": {},
+    "tag": "blocked"
+  }],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "blocked"
+      }
+    ]
+  }
+}

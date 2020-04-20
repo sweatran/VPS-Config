@@ -1,0 +1,12 @@
+[Unit]
+Description=chfs
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/chfs --port=8080 --path=yourpath --rule="::|username:password:rwd"
+PrivateTmp=true
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target
